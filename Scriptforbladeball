@@ -15,6 +15,7 @@ local Window = Fluent:CreateWindow({
 --Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "" }),
+    Main2 = Window:AddTab({ Title = "Main 2", Icon = "" }),
     Visual = Window:AddTab({ Title = "Visual", Icon = "" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
@@ -41,7 +42,13 @@ do
     end,
  })
             
-                        
+ Tabs.Main2:AddButton({
+    Title = "Auto Farm",
+    Description = "Version Pc and Mb",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/frankblox/rbxscripts/main/0bladeball"))()
+end,
+})                    
 
 
 
@@ -76,11 +83,25 @@ do
         end
     })
 
+
+
+    local Slider = Tabs.Main2:AddSlider("WalkSpeed", {
+        Title = "Speed",
+        Description = "Change Speed ( Should 48)",
+        Default = 37,
+        Min = 36,
+        Max = 100,
+        Rounding = 1,
+        Callback = function(Value)
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+        end
+    })
+   
     Slider:OnChanged(function(Value)
         print("Slider changed:", Value)
     end)
 
-    Slider:SetValue(1)
+    Slider:SetValue(36)
 
    
      
